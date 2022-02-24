@@ -1,15 +1,3 @@
-// Declara uma classe contendo as informações do usuario
-class User {
-    constructor(name, gender, cellPhone, email, age, imageURL) {
-        this.name = name
-        this.gender = gender
-        this.cellPhone = cellPhone
-        this.email = email
-        this.age = age;
-        this.imageURL = imageURL;
-    }
-}
-
 // Obtem os dados da API
 async function getUserData(numberOfElements) {
     const response = await fetch(`https://randomuser.me/api/?results=${numberOfElements}`)
@@ -28,10 +16,9 @@ async function loadUserData(numberOfElements) {
         const email = user["email"]
         const age = user["registered"]["age"]
         const imageURL = user["picture"]["medium"]
-        const filteredUserData = new User(name, gender, cellPhone, email, age, imageURL);
+        const filteredUserData = {name, gender, cellPhone, email, age, imageURL}
         userData.push(filteredUserData)
     });
-    console.log(userData)
     renderUserCard(userData)
 }
 
@@ -57,3 +44,10 @@ function renderUserCard(userData) {
 }
 
 loadUserData(26)
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
+        loadUserData(26)
+    }
+})
+
