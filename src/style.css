@@ -15,6 +15,10 @@ html {
     font-family: 'Roboto', sans-serif;
 }
 
+html, body {
+    margin: 0 auto;
+}
+
 img {
     border-radius: 50%;
 }
@@ -26,22 +30,25 @@ p {
 
 /* ================= Header ================= */
 header {
-    color: var(--main-title);
+    color: white;
+    text-shadow: 2px 2px 2px #161D30;
+    background-color: #52f59b;
     display: flex;
-    justify-content: center;
-    max-width: 70%;
     margin: auto;
     font-weight: bold;
     font-size: 50px;
-    padding: 20px;
+    padding: 50px;
 }
 
+.container {
+    margin-left: 7%;
+}
 /* ================= Barra de pesquisa ================= */
 .search-bar-container {
     display: flex;
     justify-content: center;
     max-width: 50%;
-    margin: 25px auto 25px auto;
+    margin: -1.7rem auto 40px auto;
     min-width: 300px;
 }
 
@@ -59,6 +66,7 @@ header {
 .search img {
     width: 1.5rem;
     padding-top: 2px;
+    filter: invert(55%);
 }
 
 .search input {
