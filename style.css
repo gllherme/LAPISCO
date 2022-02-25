@@ -37,28 +37,47 @@ header {
 }
 
 /* ================= Barra de pesquisa ================= */
-.search-bar {
+.search-bar-container {
     display: flex;
     justify-content: center;
     max-width: 50%;
     margin: 25px auto 25px auto;
+    min-width: 300px;
 }
 
-#search {
+.search {
+    display: flex;
     width: 100%;
     height: 35px;
-    font-size: 22px;
     background-color: var(--card-background);
-    border: none;
     padding: 12px;
     border-radius: 50px;
-    color: var(--card-title);
 
     box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.25);
 }
 
-#search:hover {
+.search img {
+    width: 1.5rem;
+    padding-top: 2px;
+}
+
+.search input {
+    width: 100%;
+    height: 100%;
+    font-size: 22px;
+    background-color: transparent;
+    border: none;
+    margin-left: 5px;
+    border-radius: 50px;
+    color: var(--card-title);
+}
+
+.search:hover {
     background-color: var(--hover-color);
+}
+
+*:focus {
+    outline: none;
 }
 
 /* ================= Cards ================= */
@@ -68,7 +87,7 @@ header {
     align-items: flex-start;
     background-color: var(--card-background);
     border-radius: 10px;
-    margin: 8px;
+    max-width: 600px;
 
     box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.25);
 }
@@ -100,14 +119,38 @@ header {
 }
 
 /* ================= Pagina principal ================= */
-
 .user-list {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, auto));
     max-width: 80%;
     margin: auto;
+    gap: 15px;
 }
 
-.user-list > div {
-    flex: 1 1 400px;
+@media (min-width: 1180px) {
+    .user-list {
+        grid-template-columns: repeat(auto-fit, minmax(400px, auto));
+    }
+}
+
+/* ================= Esconder Elemento ================= */
+.hidden {
+    display: none !important;
+}
+
+/* ================= Loading ================= */
+.loading {
+  border: 8px solid var(--card-title);
+  border-top: 8px solid var(--background);
+  border-radius: 50%;
+  animation: loadingAnimation .8s linear infinite;
+  width: 40px;
+  height: 40px;
+  margin: 20px auto;
+}
+
+/* ================= Keyframes ================= */
+@keyframes loadingAnimation {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
 }
